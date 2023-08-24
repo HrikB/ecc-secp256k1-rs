@@ -217,7 +217,7 @@ impl U256 {
     }
 
     /// (a / b) (mod p) = (a * b^-1) (mod p)
-    /// 
+    ///
     /// On a finite field, b^(p - 1) = 1:
     /// = (a * b^(p - 1) * b^-1) (mod p)
     /// = (a * b^(p - 2)) (mod p)
@@ -225,6 +225,12 @@ impl U256 {
     pub fn div_mod(&self, b: &Self, p: &Self) -> Self {
         assert!(p.v >= PU256::from_big_endian(&[2]));
         return self.mul_mod(&b.exp_mod(&U256 { v: p.v - 2 }, p), p);
+    }
+}
+
+impl PartialEq for U256 {
+    fn eq(&self, other: &Self) -> bool {
+        return self.v == other.v;
     }
 }
 
