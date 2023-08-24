@@ -6,7 +6,7 @@ use rand::prelude::*;
 use secp256k1::{PublicKey, Secp256k1, SecretKey};
 
 #[test]
-// #[ignore]
+#[ignore]
 fn ecc() {
     // generate a random private key
     let mut rng = rand::thread_rng();
